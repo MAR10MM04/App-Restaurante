@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>DiDi Food - Search Hamburguesas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1a1c1c",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-container": "#646464",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "secondary": "#5e5e5e",
+                    "surface-bright": "#f9f9f9",
+                    "on-surface-variant": "#5a4136",
+                    "on-primary-container": "#572000",
+                    "primary": "#a04100",
+                    "inverse-on-surface": "#f1f1f1",
+                    "primary-container": "#ff6b00",
+                    "surface": "#f9f9f9",
+                    "inverse-primary": "#ffb693",
+                    "on-background": "#1a1c1c",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#e2bfb0",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "outline": "#8e7164",
+                    "tertiary-fixed": "#e3e2e2",
+                    "on-secondary-fixed-variant": "#474747",
+                    "error-container": "#ffdad6",
+                    "background": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "inverse-surface": "#2f3131",
+                    "tertiary-container": "#999999",
+                    "on-tertiary-container": "#303132",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-container-low": "#f3f3f3",
+                    "primary-fixed-dim": "#ffb693",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#a04100",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary": "#5e5e5f",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "surface-variant": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#351000",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#e2e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "margin-desktop": "48px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- Top Navigation Anchor (Shared Component: TopAppBar) -->
+<header class="w-full sticky top-0 z-50 bg-surface dark:bg-surface-container-high shadow-sm">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="location_on">location_on</span>
+<span class="font-label-md text-label-md text-secondary">Hamburgo 123...</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">DiDi Food</h1>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed hover:bg-surface-container-low p-2 rounded-full transition-colors active:opacity-80" data-icon="shopping_cart">shopping_cart</span>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-6">
+<!-- Active Search Input -->
+<section class="mb-6">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-secondary" data-icon="search">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-12 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container text-body-lg font-body-lg text-on-surface transition-all shadow-sm" placeholder="Â¿QuÃ© se te antoja?" type="text" value="Hamburguesas"/>
+<div class="absolute inset-y-0 right-4 flex items-center">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary" data-icon="close">close</span>
+</div>
+</div>
+</section>
+<!-- Filters Row (Bento-style chips) -->
+<section class="mb-8 overflow-x-auto hide-scrollbar flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-transform active:scale-95 whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+                Filtros
+            </button>
+<button class="px-4 py-2.5 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors whitespace-nowrap">
+                Distancia
+            </button>
+<button class="px-4 py-2.5 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors whitespace-nowrap">
+                Precio
+            </button>
+<button class="px-4 py-2.5 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors whitespace-nowrap">
+                CalificaciÃ³n
+            </button>
+<button class="px-4 py-2.5 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors whitespace-nowrap">
+                Tiempo de entrega
+            </button>
+</section>
+<!-- Results Header -->
+<div class="flex justify-between items-end mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Resultados para "Hamburguesas"</h2>
+<p class="font-label-sm text-label-sm text-secondary">24 restaurantes encontrados</p>
+</div>
+<!-- Restaurant Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all group cursor-pointer">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A juicy gourmet cheeseburger with melting cheddar, fresh lettuce, and ripe tomatoes on a toasted brioche bun. The lighting is warm and cinematic, highlighting the texture of the meat and the crispness of the vegetables. The background is a blurred, high-end modern kitchen with warm wooden accents and stainless steel surfaces. Professional food photography style with rich colors and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnGejL1XAUG5oalvxiKjc9oN_Wik5kPKxiuHNjpCgEE9bi9-vNk0ZXHspvG-l8h13efFv8qCMes5TeL75UM17He8jo7UhDsAenKnRT5_yj83O4HRlgAwiERWdVGgrF2CehdmV9HWeA8yIksdVnR4e2a8efGReKk1a3KfhPBnvMD2laYpjYXBNnoAHWChALyBObxvpyt5nah3u4p4bKvsFwChGEYEcXA-jHruKocR6gJ1xSCMucJWRVNY7B4bPa3jApzvQM2y9RqfR3"/>
+<div class="absolute top-3 left-3 bg-primary-container text-on-primary px-3 py-1 rounded-full text-label-sm font-label-md">
+                        EnvÃ­o Gratis
+                    </div>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface">The Burger House</h3>
+<div class="flex items-center bg-surface-container-high px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md ml-1">4.8</span>
+</div>
+</div>
+<p class="text-secondary font-body-md text-body-md mb-4">Hamburguesas â€¢ Americana â€¢ Gourmet</p>
+<div class="flex items-center gap-4 text-on-secondary-container font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+                            15-25 min
+                        </div>
+<div class="flex items-center gap-1 text-primary font-bold">
+<span class="material-symbols-outlined text-[18px]" data-icon="delivery_dining">delivery_dining</span>
+                            MXN $0.00
+                        </div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all group cursor-pointer">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A massive double patty smash burger with caramelized onions and special sauce dripping from the sides. The image is bright and vibrant, set in a trendy urban diner with neon accents. High contrast lighting emphasizes the crispy edges of the beef. Professional food photography featuring deep oranges and clean white highlights, creating an appetizing and energetic mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRZtuEUNR98mqsH_3T5aRX4ZOzx6ki-5_5kKEvcTY7hCDQ5KGOAyf7ETfACY8Kw8Y3hXjOsVGobCzeR9qsIsvtlbbhUf43dzfTIjkbG3Y43d-VQpdEurls8AJAwJIAEypxEBITOkFi5Pu9ixksWGhqpGi4KczQ0Y0rSfD0W_IfotUJR2tI0xOrbw7b_NnOlFdwPgjwacT6j2Zz_CIjPWE0r_RlqRFHbtF5bIZrB8-7ZEsgpT4kwZX6UbLoQY8w3EgAywbZa5P3NBuc"/>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface">Smash &amp; Co.</h3>
+<div class="flex items-center bg-surface-container-high px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md ml-1">4.5</span>
+</div>
+</div>
+<p class="text-secondary font-body-md text-body-md mb-4">Fast Food â€¢ Smash Burgers â€¢ Malteadas</p>
+<div class="flex items-center gap-4 text-on-secondary-container font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+                            20-35 min
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delivery_dining">delivery_dining</span>
+                            MXN $25.00
+                        </div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all group cursor-pointer">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An artisanal veggie burger with a thick black bean patty, avocado slices, and sprouts on a whole wheat bun. The setting is a minimalist cafe with plenty of natural daylight and soft shadows. The color palette is clean, with earthy greens and warm browns against a light gray stone surface. Sophisticated and healthy aesthetic, high-key lighting, professional culinary photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-yfj_SR00bKln5GbJnw3OmrSozaT6Up_JRrgPS7-yv4wqPACKf8C2BEHupT1czKExOJuFjJGlZW-3FPzq5v-tdHhV_zlASrJ6C-8QC2fo69jy6ByzjI2z8-drQAAab2UDU2HFwcHTQCDCgAhqLdN5wYg9qTqEN6Vmo3Lc4I7X8P0qzk_wfvzXVyOLFMrtU1w7TFFUA6SAKzQZlZgCPQOzye5GWH87HBQWRhtwktdeL3nFoSbsJEtyB4H3oDVHXRKTEP6XWAiEA2JC"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="favorite">favorite</span>
+</div>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface">Green Garden Burger</h3>
+<div class="flex items-center bg-surface-container-high px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md ml-1">4.9</span>
+</div>
+</div>
+<p class="text-secondary font-body-md text-body-md mb-4">Saludable â€¢ Vegano â€¢ Jugos Naturales</p>
+<div class="flex items-center gap-4 text-on-secondary-container font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+                            25-40 min
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delivery_dining">delivery_dining</span>
+                            MXN $32.00
+                        </div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all group cursor-pointer">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A rustic classic cheeseburger and fries served on a metal tray with parchment paper. The background shows a cozy, dimly lit gastropub atmosphere with warm hanging lights and exposed brick. Deep shadows and glowing highlights create a rich, comforting mood. The food is perfectly composed to show off its textures. Professional lifestyle food photography in a professional urban setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG4AOTWXQjENecDNn7UoDKJB4vzKTb9ELmf79qUkn28Y1CX8_L6JabSFfMtBaspS3Q_6xc1y09sR8BoXj_aHmUsx5wpRgXcowtk7Xt_snRjt-N9d4l3Se_y-e4p0MfMcjQb-Bcg2hSA9vbXSOiTFG1SLm_8fMOZus6uotoq1n0UzQqdc53E39pJ-queoXHa2hifq7OQBH_DD9OzFXvuLec5TP1EKGm8b-h_A1-eBdRFSh-Uvc01ML4F4SEe5mm5t-vc-cqCTJNHYtK"/>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface">Pueblo Burger</h3>
+<div class="flex items-center bg-surface-container-high px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md ml-1">4.2</span>
+</div>
+</div>
+<p class="text-secondary font-body-md text-body-md mb-4">Tradicional â€¢ Parrilla â€¢ Al CarbÃ³n</p>
+<div class="flex items-center gap-4 text-on-secondary-container font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+                            30-45 min
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delivery_dining">delivery_dining</span>
+                            MXN $15.00
+                        </div>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all group cursor-pointer">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Gourmet sliders arranged in a row, each with different toppings like blue cheese, pineapple, and spicy mayo. The shot is overhead on a black slate background, creating a high-contrast, modern look. Vivid colors from the fresh ingredients stand out. Professional minimalist food photography with a focus on geometric arrangement and vibrant lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGbPZPzNqjmX2K65P8J0GFB16C6jPDgz8Jrry5ouUDGb1fHNrDCSZphaWdHH6yEs8LJsn8m8VXrI6J7FJArVjNg0usMks-YX_tqtQq8gImMrwBUIG2p33MCb4TmXeDFLtA-kU6sOD2rVskbHqwkRVHLVRKlAnHo-BM96Iqa-MyxyidfE_9kT66IDYeA4D30Rx3SzBEmezlfHLH1MR0FtplaxniZyT3EFI_tXxjhPXIC_4StuD92JFEdm2kG7idQWfKZ3EIwCh8ge8Q"/>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface">Slider Hub</h3>
+<div class="flex items-center bg-surface-container-high px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md ml-1">4.6</span>
+</div>
+</div>
+<p class="text-secondary font-body-md text-body-md mb-4">Sliders â€¢ Mezcla â€¢ Especialidades</p>
+<div class="flex items-center gap-4 text-on-secondary-container font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+                            20-30 min
+                        </div>
+<div class="flex items-center gap-1 text-primary font-bold">
+<span class="material-symbols-outlined text-[18px]" data-icon="delivery_dining">delivery_dining</span>
+                            MXN $0.00
+                        </div>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all group cursor-pointer">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up of a spicy chicken burger with crunchy breaded chicken, buffalo sauce, and creamy coleslaw. The image captures the texture of the crispy batter and the freshness of the slaw. Lighting is bright and punchy, emphasizing a fun and bold flavor profile. Set in a modern clean dining area with bright white and orange brand elements. High-quality commercial food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw2aUV74MkVyNaqitySXYNSKMSNp5szffEgCWipVP_e-o1Beo1OYaqaHc0lCYwtqMB_V8T1Qsn-d-rZqcrsCP4vE0_Sr9ylcgZkF6rup5yQLsBLqQxTk2klZaa7uZqpSKOPTJvbnB2BSaiRCtN2qX3f8FEOkEp82M_bIwjgCt93UZ--XXhGXF41KQDM0dyCRW_w_skpv8O4BckGZggisfSfklZXEzLIq0zmUorA28nTN607XmsgWIh3VEzi6ZyWNBvK2hejhP7cNrj"/>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface">Fire Chicken &amp; Beef</h3>
+<div class="flex items-center bg-surface-container-high px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md ml-1">4.4</span>
+</div>
+</div>
+<p class="text-secondary font-body-md text-body-md mb-4">Pollo â€¢ Picante â€¢ Hamburguesas</p>
+<div class="flex items-center gap-4 text-on-secondary-container font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+                            18-28 min
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="delivery_dining">delivery_dining</span>
+                            MXN $19.00
+                        </div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Navigation Shell (Shared Component: BottomNavBar) -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface-container border-t border-outline-variant dark:border-secondary shadow-[0px_-8px_30px_rgba(0,0,0,0.08)]">
+<div class="flex justify-around items-center h-20 pb-safe w-full px-4">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Search (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-fixed dark:bg-primary-fixed-dim rounded-full px-4 py-1 hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<!-- Favorites -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-sm text-label-sm">Favorites</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('button, .group').forEach(el => {
+            el.addEventListener('click', () => {
+                el.classList.add('opacity-80');
+                setTimeout(() => el.classList.remove('opacity-80'), 100);
+            });
+        });
+
+        // Filter chip selection toggle
+        const filterChips = document.querySelectorAll('button:not(:first-child)');
+        filterChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                if(chip.classList.contains('bg-primary-container')) {
+                    chip.classList.remove('bg-primary-container', 'text-on-primary');
+                    chip.classList.add('bg-surface-container-highest', 'text-on-surface');
+                } else {
+                    chip.classList.add('bg-primary-container', 'text-on-primary');
+                    chip.classList.remove('bg-surface-container-highest', 'text-on-surface');
+                }
+            });
+        });
+    </script>
+<script src="/bridge.js"></script></body></html>
