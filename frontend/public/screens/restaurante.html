@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1a1c1c",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#646464",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "secondary": "#5e5e5e",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface-variant": "#5a4136",
+                        "on-primary-container": "#572000",
+                        "primary": "#a04100",
+                        "inverse-on-surface": "#f1f1f1",
+                        "primary-container": "#ff6b00",
+                        "surface": "#f9f9f9",
+                        "inverse-primary": "#ffb693",
+                        "on-background": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#e2bfb0",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "outline": "#8e7164",
+                        "tertiary-fixed": "#e3e2e2",
+                        "on-secondary-fixed-variant": "#474747",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-container": "#999999",
+                        "on-tertiary-container": "#303132",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-fixed-dim": "#ffb693",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#a04100",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary": "#5e5e5f",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#351000",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "margin-desktop": "48px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .product-card-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .nav-shadow {
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e2e2;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d1d1d1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- Back Button - Floating Top Left -->
+<div class="fixed top-4 left-4 z-[60] md:left-margin-desktop">
+<button class="flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-lg active:scale-95 transition-transform hover:bg-surface-container-low" onclick="history.back()">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative pb-24 max-w-[1200px] mx-auto md:bg-white md:min-h-screen md:shadow-sm">
+<!-- Header Section -->
+<header class="relative w-full h-64 md:h-80 overflow-hidden">
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A professional high-angle food photography shot of a vibrant, gourmet sushi platter spread across a clean, minimalist wooden table. The lighting is bright and natural, reflecting a premium and fresh atmosphere. Soft ambient shadows give the composition depth. The color palette features pops of fresh orange salmon and green wasabi against a neutral white and light wood background, maintaining a clean and modern aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtcSR-SifNtAnPZPNZhaek8t-heSVsINIXPSFTz1YMoGDQy0AvqNQsodcYYBtmAeJRvavicxsOx0QL21z2tRa3f7PcvTWjsL1qFagPTkkCH2D9nG-tYR04WKPLOsen_p35eCrfTiIRMTirgFqscLMtfMGBjarwPGKqd5ZLF6yI0Hxg_oWGMi2W6_hKQfOQn0_D-gQ2OsaxaaePoE2V2BDhNYjMaM-KLryHAVOUiAaI8u9yow3wl0D7j3unVkEnU8XtJjdfiySP39zY')">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<!-- Restaurant Info Overlay -->
+<div class="absolute bottom-0 left-0 w-full p-margin-mobile md:px-margin-desktop md:pb-lg flex flex-col items-start gap-4">
+<div class="flex items-center gap-4">
+<!-- Restaurant Logo -->
+<div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-xl shadow-lg flex items-center justify-center p-1 overflow-hidden">
+<img class="w-full h-full object-contain rounded-lg" data-alt="A clean, minimalist vector logo for a high-end sushi restaurant called Nori & Rice. The logo features a stylized orange fish icon with simple black geometric lines on a crisp white background. The design is modern, professional, and fits a high-velocity food delivery brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAop3yR5U-5xBgcrr3uUpHT2wFJcEx-BcSpUzZIui5xgskihz1e4TDh9W3zJNJb9sevdesxOMGA5978Cbbc5MpFkIr6dh0mf9zdDwXUzBvUl39lAQknu384Zh-MjHsD2kbTQbrBBgyOuiK9YOZEkXQjStuGl2SQbXu7fbrZAQT4PTtoRC4yEHPxzDNo6hSbs3UKlIRrqbhM6_Dry9JRRGCxQer3KX3eM2XGuumP8sObB5uOzCup23y8UEec87tzVIgrmFopxU2NrY6b"/>
+</div>
+<div class="text-white">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg leading-none">Nori & Rice Premium</h1>
+<div class="flex items-center gap-2 mt-2">
+<div class="flex items-center bg-primary-container px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-white ml-1">4.8</span>
+</div>
+<span class="text-label-md font-label-md opacity-90">â€¢ Sushi & Asian â€¢ $$</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Stats Bar -->
+<div class="flex justify-between items-center px-margin-mobile py-4 border-b border-surface-container-highest md:px-margin-desktop">
+<div class="flex flex-col">
+<span class="text-secondary text-label-sm font-label-sm">Delivery time</span>
+<span class="text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span> 20-30 min
+                </span>
+</div>
+<div class="w-px h-8 bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="text-secondary text-label-sm font-label-sm">Delivery cost</span>
+<span class="text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delivery_dining</span> $25.00
+                </span>
+</div>
+<div class="w-px h-8 bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="text-secondary text-label-sm font-label-sm">Min. order</span>
+<span class="text-on-surface font-label-md text-label-md">$150.00</span>
+</div>
+</div>
+<!-- Sticky Tab Bar -->
+<nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-surface-container-highest px-margin-mobile md:px-margin-desktop overflow-x-auto whitespace-nowrap scrollbar-hide py-3">
+<div class="flex gap-4">
+<a class="px-4 py-2 bg-primary-fixed text-primary font-label-md text-label-md rounded-full transition-colors" href="#para-compartir">Para compartir</a>
+<a class="px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md rounded-full transition-colors" href="#combos">Combos</a>
+<a class="px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md rounded-full transition-colors" href="#bebidas">Bebidas</a>
+<a class="px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md rounded-full transition-colors" href="#postres">Postres</a>
+<a class="px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md rounded-full transition-colors" href="#promos">Promos</a>
+</div>
+</nav>
+<!-- Product Sections -->
+<section class="mt-6 px-margin-mobile md:px-margin-desktop" id="para-compartir">
+<h2 class="font-headline-md text-headline-md mb-6">Para compartir</h2>
+<!-- Bento Grid inspired layout for items -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Item 1 -->
+<div class="product-card-shadow bg-surface-container-lowest rounded-xl p-4 flex gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Sushi Boat XL</h3>
+<p class="text-label-sm font-label-sm text-secondary line-clamp-2 mb-2">40 pieces of mixed rolls including Salmon Tempura, California, and Nigiri selection.</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-[18px] text-primary">$450.00</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Close-up macro shot of a gourmet sushi platter with forty varied pieces of fresh sushi and nigiri. The lighting is studio-quality, highlighting the texture of the orange salmon and the sparkle of the rice. The style is modern minimalist food photography with high contrast and vibrant natural colors on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2hZWH_4zRwbD2gNtJ-W1vCN9oIqgzG-RMXqX0oxIA78dqJEVdYtnsHXFzoye6GITiOSTJYgk9uJdqSvq4lkHS7LgUp3Te7FfSrkIWBaDZ3gIfhApbnHho-xXDf1nNoVoAP6XqmWRMV8SzqFkuO1UoyFpzrY_7Y8MzDHPiiDc8LNoTPylXa0C2J2ZuKp-lypWJvmek_RIDo48yZEdx8_Z2uIfdvTa9k2RuueEYMtaXKqCrXm1RrMR897wHuCIijm8_-c_ABUec-5Ht"/>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="product-card-shadow bg-surface-container-lowest rounded-xl p-4 flex gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Gyoza Platter (12pcs)</h3>
+<p class="text-label-sm font-label-sm text-secondary line-clamp-2 mb-2">Handmade steamed dumplings with pork and ginger filling. Served with soy dip.</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-[18px] text-primary">$180.00</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A top-down view of twelve perfectly steamed gyoza dumplings arranged on a sleek black ceramic plate. A small bowl of dark soy sauce with sesame seeds sits to the side. The lighting is bright and professional, emphasizing the thin, translucent dough. The overall aesthetic is clean, professional, and appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtR-C_51ssVWpAcU-81JbrMF8KVPkpxI_t-h8OZ8dd3vIP3WmbSEWYKRlczCOmwlypeoz66ojov5gfP4uXul9QfV2f31Lh-svvorYuxz8WVkiSr007RU-PQcyxfNKCff5I6Y_X3gRZqSKg6p3p-IWVcEt09OpERKPZpJ03_nWiH4Zt1UXHbrTgbFcml8GXaW5cFcgCcOGdWzmqoaF7gX9qpG8BDDIJGf2MIWZQP-U6ASS60jylVQruMOL7990GZHjnSYL7GTmI0jn7"/>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="product-card-shadow bg-surface-container-lowest rounded-xl p-4 flex gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Yakitori Skewers Mix</h3>
+<p class="text-label-sm font-label-sm text-secondary line-clamp-2 mb-2">6 skewers of grilled chicken and scallions with a sweet tare glaze.</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-[18px] text-primary">$210.00</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Glistening grilled yakitori chicken skewers with charred scallions, coated in a dark, rich glaze. The skewers are presented on a minimalist gray stone plate. High-key lighting captures the sheen of the sauce. The visual style is crisp and modern, focusing on the texture of the grilled meat against a neutral light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJdGiVc180WKMsDQHZ_8ngrJ48dy9amXIuZ6T7lCKTULtLhEnt3CVeuOAmiANpbUSsjzlHuPt5GWHU1MXR9DGbYHo56aO0vg7MypDhSSwtCIungi2NBIkVEiSK28vjShBbk-v9WnP4FHrk1RoXDxX6nmXv41NhsIRe3r7X1GcEu_JKJ_ciVwWsF-YN-X_4UH0Go69g3aq2tye-rED15Xkg4eG8Qyri_9eW9q0wIMKtql7Si6zP0SQgaPYWtJM8TSgTfXQed28XQORe"/>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-10 px-margin-mobile md:px-margin-desktop" id="combos">
+<h2 class="font-headline-md text-headline-md mb-6">Combos</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Item 4 -->
+<div class="product-card-shadow bg-surface-container-lowest rounded-xl p-4 flex gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Office Lunch Special</h3>
+<p class="text-label-sm font-label-sm text-secondary line-clamp-2 mb-2">California Roll (8pcs) + Miso Soup + Green Tea. Perfect for a quick break.</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-[18px] text-primary">$155.00</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A modern bento-style lunch combo featuring a row of California rolls, a steaming bowl of miso soup in a black bowl, and a cup of green tea. The scene is bright and airy, with a focus on fresh ingredients and clean lines. The professional photography uses soft lighting and a light gray background for a contemporary look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK4Vs2kwfxPFoz7_deQrP_aZy-SCwEFbAs2JmYResd7izx3TnTWSZw0Fv3GnVuqScMvEokAaZ3Z9Xea_V_tIUze7o-fVmMvjAexG2NTXmmZzNJ21HWKl0pVjLcGPa76OLFUoQ3dXdQOCoK6fEvXuXW5OJokx7FZbj8cxCe-Qyo_Rbv_zrYAk1ATXxbnVdzYp8wLhrTdXHi4cLXLIxyU4AYyl0_JKN5x52PzJOkJil-NfdCyqFzHt2gknHdD3Wk-xdrhYxfTdgBECn7"/>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-10 px-margin-mobile md:px-margin-desktop" id="bebidas">
+<h2 class="font-headline-md text-headline-md mb-6">Bebidas</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Item 5 -->
+<div class="product-card-shadow bg-surface-container-lowest rounded-xl p-4 flex gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Matcha Iced Latte</h3>
+<p class="text-label-sm font-label-sm text-secondary line-clamp-2 mb-2">Premium Japanese matcha with cold milk and a touch of organic honey.</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-[18px] text-primary">$85.00</span>
+<button class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A refreshing iced matcha latte in a tall glass, showing the gradient of vibrant green tea mixing with white milk and ice cubes. The lighting is bright and refreshing, highlighting condensation on the glass. The background is a clean white marble, reinforcing the premium, high-end cafÃ© aesthetic of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqaYcqlIvxtiWV7iWbCPUsTDGn-9JX5UyVWS7qX67YOn_fMOrUdPVblabWdha0m7q6bglCK-wmLIYBRQJDVfv5ChHfaBqOL2uIIEmDLlGZCIR4eGvkCOtJQIyvCd7VkPnl2zzlDQJCIqB0K6PxF42gOwo6-ZO628P90bYskn9KxAzYf8mMkCXC9J57Ys8MUaZR9XdDwThEDSG7o8NfHLbddDW6sH1yJwybIiJjsjssaupWmuQzLUIngS03hhsrcCEk8-X-tiXgGgS"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar - From Shared Components -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface md:max-w-[400px] md:left-1/2 md:-translate-x-1/2 md:rounded-t-3xl nav-shadow">
+<div class="flex border-t border-outline-variant dark:border-secondary justify-around items-center h-20 pb-safe w-full px-4">
+<!-- Home -->
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<!-- Search -->
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</button>
+<!-- Orders (Active state mapping for Restaurant Profile context logic) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-fixed dark:bg-primary-fixed-dim rounded-full px-4 py-1 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</button>
+<!-- Favorites -->
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Favorites</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</div>
+</nav>
+<!-- Cart Floating Action Button (Only on Mobile-ish context) -->
+<div class="fixed bottom-24 right-6 z-50 md:right-margin-desktop group">
+<button class="flex items-center gap-3 bg-primary-container text-white px-6 py-4 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md hidden md:block">Ver carrito (2)</span>
+<span class="font-label-md text-label-md md:hidden">2</span>
+</button>
+</div>
+<script>
+        // Smooth scrolling for category links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const offset = 120; // sticky header + tabs height
+                const elementPosition = targetElement.offsetTop;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+
+                // Update active state UI
+                document.querySelectorAll('nav a').forEach(a => {
+                    a.classList.remove('bg-primary-fixed', 'text-primary');
+                    a.classList.add('text-secondary');
+                });
+                this.classList.add('bg-primary-fixed', 'text-primary');
+                this.classList.remove('text-secondary');
+            });
+        });
+
+        // Simple interaction for adding items
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.querySelector('.material-symbols-outlined')?.textContent === 'add') {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const ripple = document.createElement('span');
+                    ripple.className = 'absolute inset-0 bg-white/20 rounded-full animate-ping';
+                    btn.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 1000);
+                });
+            }
+        });
+    </script>
+<script src="/bridge.js"></script></body></html>
