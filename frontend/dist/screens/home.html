@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DiDi Food - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1a1c1c",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-container": "#646464",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "secondary": "#5e5e5e",
+                    "surface-bright": "#f9f9f9",
+                    "on-surface-variant": "#5a4136",
+                    "on-primary-container": "#572000",
+                    "primary": "#a04100",
+                    "inverse-on-surface": "#f1f1f1",
+                    "primary-container": "#ff6b00",
+                    "surface": "#f9f9f9",
+                    "inverse-primary": "#ffb693",
+                    "on-background": "#1a1c1c",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#e2bfb0",
+                    "surface-container-high": "#e8e8e8",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "outline": "#8e7164",
+                    "tertiary-fixed": "#e3e2e2",
+                    "on-secondary-fixed-variant": "#474747",
+                    "error-container": "#ffdad6",
+                    "background": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "inverse-surface": "#2f3131",
+                    "tertiary-container": "#999999",
+                    "on-tertiary-container": "#303132",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-container-low": "#f3f3f3",
+                    "primary-fixed-dim": "#ffb693",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#a04100",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary": "#5e5e5f",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "surface-variant": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#351000",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#e2e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "margin-desktop": "48px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { backdrop-filter: blur(8px); background: rgba(249, 249, 249, 0.9); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar from Shared Components Strategy -->
+<header class="w-full sticky top-0 z-50 bg-surface shadow-sm glass-header">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop w-full">
+<div class="flex items-center gap-2 max-w-[70%]">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div class="flex items-center gap-1 overflow-hidden">
+<span class="font-label-md text-label-md truncate">Av. Paseo de la Reforma 222</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">keyboard_arrow_down</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Search Bar Integration below header -->
+<div class="px-margin-mobile pb-4">
+<div class="relative flex items-center bg-surface-container-low rounded-xl px-4 py-3 group focus-within:ring-2 focus-within:ring-primary-container transition-all">
+<span class="material-symbols-outlined text-secondary mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-body-md placeholder:text-secondary" placeholder="Â¿QuÃ© se te antoja hoy?" type="text"/>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto">
+<!-- Categories: Horizontal Scrollable List -->
+<section class="mt-4">
+<div class="flex overflow-x-auto no-scrollbar gap-6 px-margin-mobile py-2">
+<!-- Category Hamburguesas -->
+<div class="flex flex-col items-center gap-2 shrink-0 active:scale-95 transition-transform">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl">lunch_dining</span>
+</div>
+<span class="font-label-sm text-label-sm">Hamburguesas</span>
+</div>
+<!-- Category Pizza -->
+<div class="flex flex-col items-center gap-2 shrink-0 active:scale-95 transition-transform">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl">local_pizza</span>
+</div>
+<span class="font-label-sm text-label-sm">Pizza</span>
+</div>
+<!-- Category Sushi -->
+<div class="flex flex-col items-center gap-2 shrink-0 active:scale-95 transition-transform">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl">set_meal</span>
+</div>
+<span class="font-label-sm text-label-sm">Sushi</span>
+</div>
+<!-- Category Pollo -->
+<div class="flex flex-col items-center gap-2 shrink-0 active:scale-95 transition-transform">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl">color_lens</span>
+</div>
+<span class="font-label-sm text-label-sm">Pollo</span>
+</div>
+<!-- Category Postres -->
+<div class="flex flex-col items-center gap-2 shrink-0 active:scale-95 transition-transform">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl">icecream</span>
+</div>
+<span class="font-label-sm text-label-sm">Postres</span>
+</div>
+<!-- Category Bebidas -->
+<div class="flex flex-col items-center gap-2 shrink-0 active:scale-95 transition-transform">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl">local_bar</span>
+</div>
+<span class="font-label-sm text-label-sm">Bebidas</span>
+</div>
+</div>
+</section>
+<!-- Promociones Carousel -->
+<section class="mt-8 px-margin-mobile">
+<div class="relative w-full aspect-[21/9] rounded-2xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="A vibrant and appetizing close-up of a gourmet double cheeseburger with melting cheese, crispy bacon, and fresh lettuce. The background is a clean, modern kitchen with warm, professional studio lighting. The overall aesthetic is bright, energetic, and professional, utilizing a vibrant orange color palette consistent with a food delivery app. The shot captures the texture and sizzle of high-quality ingredients." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBs9YOaLBHslK7VTm52z6GzIoyvirhOCHoH5UZkgSO_6Qh6hl92vElHfPVWYtBAS9HLvjCuWdy9AC3n67XRFr1IlH9vJatHkLTaVWSTzGDVQzuEAACYGW9HLM35sqQUMu6gynpZYKoVdTIdPMbzDgUtCtmtTCAV1AMAjV1U3dbu52muRbKSChqCy_k6Nvx2oqPA88aQ-VfxQV2AeNiRMfK78TiWEMqFU8dI8Wsfe-xEHLQC6KL4daCoaIwZPoz-3UETcQiQcNyhesV_')"></div>
+<div class="absolute bottom-6 left-6 z-20 text-white">
+<p class="font-label-md text-label-md uppercase tracking-wider opacity-90">Oferta del DÃ­a</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mt-1">50% OFF en Burger King</h2>
+<button class="mt-3 px-6 py-2 bg-primary-container text-white rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-transform">Pedir Ahora</button>
+</div>
+<div class="absolute bottom-4 right-6 z-20 flex gap-2">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+<div class="w-2 h-2 rounded-full bg-white/40"></div>
+<div class="w-2 h-2 rounded-full bg-white/40"></div>
+</div>
+</div>
+</section>
+<!-- Restaurantes Recomendados Grid -->
+<section class="mt-10 px-margin-mobile">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md">Restaurantes recomendados</h3>
+<p class="font-body-md text-body-md text-secondary">Basado en tus pedidos anteriores</p>
+</div>
+<button class="text-primary font-label-md text-label-md">Ver todo</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Restaurant Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow group cursor-pointer">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An overhead cinematic shot of traditional Italian pizza with fresh basil, mozzarella, and juicy tomatoes. The setting is a rustic yet modern restaurant table with warm ambient lighting. High white space and professional food photography focus on the textures of the crust. The color palette is natural with a pop of vibrant primary orange accents in the branding visible on a napkin nearby." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4DwaBFUuk0CccPZkaw42b9YyedpD42iFa71WXMu0eW0CJlRHlcVEI8pUbcmUkyDEFZydlrlGuCV9Ig-m6pxnu7J12wUX6Ye5b_yYtpZEx_s8H539clHCeEJAc5tSdN388vbq1W5N9IU5XYhEhL5x7_Y9ifWRA9N4EKP6Pfp6wtRnaJmMAuXA_VgrF5uvOw6IBxi1xK-l12xwl7nHEzR4t7FXYsbghe-gQVIpuKRgieRsnc9jVpSmFwvVWSmd9sU9qLO3gqSRpufnI"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.8</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-md text-[18px] leading-tight mb-1">Pizzeria Napoli Centrale</h4>
+<div class="flex items-center gap-3 text-secondary">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-label-sm">25-35 min</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm">EnvÃ­o $25.00</span>
+</div>
+<div class="mt-3 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full font-label-sm text-label-sm text-secondary">Pizza</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full font-label-sm text-label-sm text-secondary">Italiana</span>
+</div>
+</div>
+</div>
+<!-- Restaurant Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow group cursor-pointer">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautifully plated sushi platter with assorted nigiri and maki rolls, ginger, and wasabi. The style is ultra-modern, featuring a dark slate plate on a clean, light gray surface. Soft, professional lighting creates delicate reflections on the fresh fish. Minimalist aesthetic with high contrast and pops of vibrant orange fish roe that align with the brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIAOSIeBC_8hiN7SiW0LlLOdeSj3DERE4-DuS8fOPLpBYDChN4r_GC0ahldO1NjG4GX-MWMMaAYseLyYm_6q5Z4AYB6iIcD9kFiUgkpcLRm1cZmkpZ-m7HnqBycUHlPbHL7dpnfZ7_L42jfAze1f_N1hz3qHiGPXVUNtERQTgw_x4ziDgI20m0NzVlmEZYaXUb6WAEz8ZQ4VU4JcH_0Qqr-iwKqxg7K1q76cI5FBPMr0H7fvhj_QGWNs22gkxhMk-jAMTudsAuMNrs"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.9</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-md text-[18px] leading-tight mb-1">Sushi Zen Master</h4>
+<div class="flex items-center gap-3 text-secondary">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-label-sm">40-50 min</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm">EnvÃ­o Gratis</span>
+</div>
+<div class="mt-3 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full font-label-sm text-label-sm text-secondary">Sushi</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full font-label-sm text-label-sm text-secondary">Japonesa</span>
+</div>
+</div>
+</div>
+<!-- Restaurant Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow group cursor-pointer">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A large bucket of golden, crispy fried chicken accompanied by coleslaw and honey biscuits. The background is a warm, inviting family-style dining room. Bright, high-key lighting emphasizes the crunch and texture of the chicken skin. The visual style is clean and appetizing, focusing on warmth and reliability, with subtle orange tones in the packaging that match the delivery service branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClk44h4j9QgxH61RJjPq99AdQYtnyDD58c3wKZV73YRXjtSA172cHzf-70pZBKofrNmQirPwr13LoVV0slEGgJQ0cV7v_yJ1zj5KVHrXOR3s21IiOHSKNxwSNtdlXQGrzSZKD51cNbeG2xfJQPNaTb9Px_feSaM9U3grGhl_UfxaUM1kwVKuXb0n6BVgy4thMOkYQVZZMSEvGNAnHwR6KQs9ONaetjMGbE3T_hskT_xfewsj-l9w-AyT3fqPX0xNiw4tyZnhtwvcq9"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.5</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-md text-[18px] leading-tight mb-1">Pollo Crujiente Express</h4>
+<div class="flex items-center gap-3 text-secondary">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-label-sm">15-25 min</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm">EnvÃ­o $15.00</span>
+</div>
+<div class="mt-3 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full font-label-sm text-label-sm text-secondary">Pollo</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full font-label-sm text-label-sm text-secondary">RÃ¡pida</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar from Shared Components -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface shadow-[0px_-8px_30px_rgba(0,0,0,0.08)] border-t border-outline-variant">
+<div class="flex justify-around items-center h-20 pb-safe w-full px-4">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary bg-primary-fixed rounded-full px-4 py-1 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Search -->
+<a class="flex flex-col items-center justify-center text-secondary hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-secondary hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<!-- Favorites -->
+<a class="flex flex-col items-center justify-center text-secondary hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm">Favorites</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-secondary hover:opacity-90 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for category scroll snapping or clicks
+        const categories = document.querySelectorAll('.shrink-0');
+        categories.forEach(cat => {
+            cat.addEventListener('click', () => {
+                categories.forEach(c => c.classList.remove('text-primary'));
+                cat.classList.add('text-primary');
+            });
+        });
+
+        // Sticky header background shift on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+<script src="/bridge.js"></script></body></html>
