@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DiDi Food - ConfiguraciÃ³n de Permisos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1a1c1c",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#646464",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "secondary": "#5e5e5e",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface-variant": "#5a4136",
+                        "on-primary-container": "#572000",
+                        "primary": "#a04100",
+                        "inverse-on-surface": "#f1f1f1",
+                        "primary-container": "#ff6b00",
+                        "surface": "#f9f9f9",
+                        "inverse-primary": "#ffb693",
+                        "on-background": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#e2bfb0",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "outline": "#8e7164",
+                        "tertiary-fixed": "#e3e2e2",
+                        "on-secondary-fixed-variant": "#474747",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-container": "#999999",
+                        "on-tertiary-container": "#303132",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-fixed-dim": "#ffb693",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#a04100",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary": "#5e5e5f",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#351000",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "margin-desktop": "48px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .permission-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .permission-card:active {
+            transform: scale(0.98);
+        }
+        .bg-gradient-mesh {
+            background: radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.05) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(255, 131, 0, 0.05) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col items-center justify-center bg-gradient-mesh">
+<!-- Main Content Container -->
+<main class="w-full max-w-md mx-auto px-margin-mobile flex flex-col items-center py-xl h-screen md:h-auto">
+<!-- Illustration Section -->
+<div class="relative w-full aspect-square max-w-[280px] mb-lg flex items-center justify-center">
+<div class="absolute inset-0 bg-primary-fixed opacity-20 rounded-full blur-3xl"></div>
+<div class="z-10 w-full h-full rounded-xl overflow-hidden shadow-2xl">
+<div class="w-full h-full" data-alt="A clean professional minimalist vector illustration for a food delivery app. The scene shows a friendly courier on a vibrant orange bicycle carrying a delivery box, moving through a stylized urban landscape with soft pastel colors. The lighting is bright and cheerful, evoking a sense of reliability and speed. The style is modern with flat geometric shapes and a limited palette of white, gray, and DiDi's signature primary orange." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7dly1FrBxejgIut-VoKxeBKPDvJXwdBUAImhRlfRORu73_HnJuIiUVSXs0il5wTj1UlaLpa1DSDSvdJLw_I_e2wZl16uAACekAEfB4_Cm3wE64MePIGjlGspj22Ty8CALoJnWRUGszF1rrEUcd7jw31YMureidAUCkmI_qjYcfjiKAQPNIY5_fEEheQAMIsiUfuFur1jLt_eY-VlNOuMrEU2tnfoEhc1iJjt57gSuz47B29bSmuM1mQXZBx7dTPMTx2FtU4OEk0UP')"></div>
+</div>
+</div>
+<!-- Header Text -->
+<div class="text-center mb-xl">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-xs">
+                Â¡Hola! Queremos darte la mejor experiencia
+            </h1>
+<p class="font-body-md text-body-md text-secondary px-sm">
+                Para que tus pedidos lleguen a tiempo y descubras lo mejor de tu zona, necesitamos algunos permisos.
+            </p>
+</div>
+<!-- Permissions Bento-style List -->
+<div class="w-full space-y-md mb-xl">
+<!-- Location Permission -->
+<div class="permission-card bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant/30 flex items-start gap-md">
+<div class="bg-primary-fixed text-primary p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="flex-1">
+<h3 class="font-label-md text-label-md text-on-surface">UbicaciÃ³n</h3>
+<p class="font-body-md text-body-md text-secondary text-sm">
+                        Encuentra restaurantes cercanos y sigue a tu repartidor en tiempo real por el mapa.
+                    </p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-lg py-sm rounded-full transition-all active:scale-95" onclick="requestPermission('location')">
+                    Permitir
+                </button>
+</div>
+<!-- Notifications Permission -->
+<div class="permission-card bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant/30 flex items-start gap-md">
+<div class="bg-primary-fixed text-primary p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</div>
+<div class="flex-1">
+<h3 class="font-label-md text-label-md text-on-surface">Notificaciones</h3>
+<p class="font-body-md text-body-md text-secondary text-sm">
+                        Te avisaremos cuando tu comida estÃ© preparada, en camino y cuando llegue a tu puerta.
+                    </p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-lg py-sm rounded-full transition-all active:scale-95" onclick="requestPermission('notifications')">
+                    Permitir
+                </button>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="w-full mt-auto md:mt-0 space-y-md">
+<button class="w-full bg-primary py-md rounded-full text-on-primary font-headline-md text-headline-md shadow-lg shadow-primary/20 hover:bg-primary-container transition-all active:scale-[0.97]" id="main-action">
+                Continuar a DiDi Food
+            </button>
+<button class="w-full py-sm text-secondary font-label-md text-label-md hover:text-on-surface transition-colors">
+                Configurar mÃ¡s tarde
+            </button>
+</div>
+</main>
+<!-- Simple Interactivity Script -->
+<script>
+        function requestPermission(type) {
+            console.log(`Requesting ${type} permission...`);
+            // Simulating UI feedback
+            const button = event.currentTarget;
+            const originalText = button.innerText;
+            
+            button.classList.remove('bg-primary');
+            button.classList.add('bg-surface-container-highest', 'text-secondary');
+            button.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+            button.disabled = true;
+
+            const card = button.closest('.permission-card');
+            card.classList.add('opacity-70');
+            
+            checkAllPermissions();
+        }
+
+        function checkAllPermissions() {
+            const buttons = document.querySelectorAll('button[onclick]');
+            const allDisabled = Array.from(buttons).every(btn => btn.disabled);
+            if (allDisabled) {
+                const mainBtn = document.getElementById('main-action');
+                mainBtn.classList.add('animate-bounce');
+                mainBtn.innerText = "Â¡Todo listo! Ir al menÃº";
+            }
+        }
+    </script>
+<script src="/bridge.js"></script></body></html>

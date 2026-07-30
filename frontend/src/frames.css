@@ -1,0 +1,7 @@
+.original-screen {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  border: 0;
+  background: #f9f9f9;
+}
