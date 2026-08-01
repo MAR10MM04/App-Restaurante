@@ -1,20 +1,47 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MiApi.Data;
+using MiApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agregar servicios al contenedor
+// Obtener la cadena de conexión
+var connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException(
+        "No se encontró la cadena de conexión 'DefaultConnection'.");
+
+// Configurar Entity Framework Core con MySQL
+builder.Services.AddDbContext<MyMDbContext>(options =>
+{
+    options.UseMySql(
+        connectionString,
+        ServerVersion.AutoDetect(connectionString)
+    );
+
+    // Útil durante el desarrollo para mostrar errores de EF Core
+    if (builder.Environment.IsDevelopment())
+    {
+        options.EnableDetailedErrors();
+        options.EnableSensitiveDataLogging();
+    }
+});
+
+// Servicio para generar hash de contraseñas
+builder.Services.AddScoped<
+    IPasswordHasher<Usuarios>,
+    PasswordHasher<Usuarios>>();
+
+// Controllers
 builder.Services.AddControllers();
+
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configurar DbContext
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 var app = builder.Build();
 
-// Configurar el pipeline HTTP
+// Swagger solamente en desarrollo
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -22,7 +49,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
