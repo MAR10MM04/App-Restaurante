@@ -6,6 +6,7 @@ using MiApi.DTOs;
 using MiApi.Models;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace MiApi.Controllers
 {
     [Route("api/[controller]")]
@@ -22,6 +23,8 @@ namespace MiApi.Controllers
             _context = context;
             _passwordHasher = passwordHasher;
         }
+
+
 
         // GET: api/usuarios
         [HttpGet]
@@ -202,120 +205,74 @@ namespace MiApi.Controllers
         }
 
         // POST: api/usuarios
-        // Todos los usuarios nuevos reciben automáticamente el rol Cliente.
-        [HttpPost]
-        public async Task<ActionResult<UsuarioRespuestaDto>>
-            CrearUsuario([FromBody] CrearUsuarioDto dto)
+[HttpPost]
+public async Task<ActionResult<UsuarioRespuestaDto>>
+    CrearUsuario([FromBody] CrearUsuarioDto dto)
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+
+    var email = dto.Email.Trim().ToLowerInvariant();
+
+    var emailExiste = await _context.Usuarios
+        .AnyAsync(usuario =>
+            usuario.Email.ToLower() == email);
+
+    if (emailExiste)
+    {
+        return Conflict(new
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            mensaje = "El correo ya está registrado."
+        });
+    }
 
-            var email = dto.Email.Trim().ToLowerInvariant();
+    var usuario = new Usuarios
+    {
+        Nombre = dto.Nombre.Trim(),
+        Email = email,
 
-            var emailExiste = await _context.Usuarios
-                .AnyAsync(usuario =>
-                    usuario.Email.ToLower() == email);
+        Telefono = string.IsNullOrWhiteSpace(dto.Telefono)
+            ? null
+            : dto.Telefono.Trim(),
 
-            if (emailExiste)
-            {
-                return Conflict(new
-                {
-                    mensaje = "El correo ya está registrado."
-                });
-            }
+        FechaRegistro = DateTime.UtcNow,
+        Estado = "Activo"
+    };
 
-            var rolCliente = await _context.Roles
-                .FirstOrDefaultAsync(rol =>
-                    rol.Nombre.ToLower() == "cliente");
+    usuario.ContrasenaHash =
+        _passwordHasher.HashPassword(
+            usuario,
+            dto.Contrasena);
 
-            if (rolCliente is null)
-            {
-                return StatusCode(
-                    StatusCodes.Status500InternalServerError,
-                    new
-                    {
-                        mensaje =
-                            "No existe el rol Cliente en la base de datos."
-                    });
-            }
+    _context.Usuarios.Add(usuario);
+    await _context.SaveChangesAsync();
 
-            await using var transaccion =
-                await _context.Database.BeginTransactionAsync();
+    var respuesta = new UsuarioRespuestaDto
+    {
+        IdUsuario = usuario.IdUsuario,
+        Nombre = usuario.Nombre,
+        Email = usuario.Email,
+        Telefono = usuario.Telefono,
+        FechaRegistro = usuario.FechaRegistro,
+        Estado = usuario.Estado,
 
-            try
-            {
-                var usuario = new Usuarios
-                {
-                    Nombre = dto.Nombre.Trim(),
-                    Email = email,
+        // Al principio no tendrá roles.
+        Roles = new List<string>(),
 
-                    Telefono = string.IsNullOrWhiteSpace(dto.Telefono)
-                        ? null
-                        : dto.Telefono.Trim(),
+        CantidadRestaurantes = 0,
+        CantidadPedidos = 0,
+        CantidadDirecciones = 0,
+        CantidadCarritos = 0,
+        TienePerfilRepartidor = false
+    };
 
-                    FechaRegistro = DateTime.UtcNow,
-                    Estado = "Activo"
-                };
-
-                usuario.ContrasenaHash =
-                    _passwordHasher.HashPassword(
-                        usuario,
-                        dto.Contrasena);
-
-                _context.Usuarios.Add(usuario);
-                await _context.SaveChangesAsync();
-
-                var usuarioRol = new UsuarioRol
-                {
-                    IdUsuario = usuario.IdUsuario,
-                    IdRol = rolCliente.IdRol,
-                    FechaAsignacion = DateTime.UtcNow
-                };
-
-                _context.UsuariosRoles.Add(usuarioRol);
-                await _context.SaveChangesAsync();
-
-                await transaccion.CommitAsync();
-
-                var respuesta = new UsuarioRespuestaDto
-                {
-                    IdUsuario = usuario.IdUsuario,
-                    Nombre = usuario.Nombre,
-                    Email = usuario.Email,
-                    Telefono = usuario.Telefono,
-                    FechaRegistro = usuario.FechaRegistro,
-                    Estado = usuario.Estado,
-                    Roles = new List<string>
-                    {
-                        rolCliente.Nombre
-                    },
-                    CantidadRestaurantes = 0,
-                    CantidadPedidos = 0,
-                    CantidadDirecciones = 0,
-                    CantidadCarritos = 0,
-                    TienePerfilRepartidor = false
-                };
-
-                return CreatedAtAction(
-                    nameof(ObtenerUsuarioPorId),
-                    new { id = usuario.IdUsuario },
-                    respuesta);
-            }
-            catch (DbUpdateException)
-            {
-                await transaccion.RollbackAsync();
-
-                return StatusCode(
-                    StatusCodes.Status500InternalServerError,
-                    new
-                    {
-                        mensaje =
-                            "Ocurrió un error al registrar el usuario."
-                    });
-            }
-        }
+    return CreatedAtAction(
+        nameof(ObtenerUsuarioPorId),
+        new { id = usuario.IdUsuario },
+        respuesta);
+}
 
         // PUT: api/usuarios/5
         // Actualiza los datos personales, pero no modifica los roles.
@@ -629,6 +586,7 @@ namespace MiApi.Controllers
 
             return Ok(usuario);
         }
+
 
         // DELETE: api/usuarios/5
         [HttpDelete("{id:int}")]

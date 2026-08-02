@@ -19,6 +19,30 @@ namespace MiApi.DTOs
         [Required(ErrorMessage = "La contraseña es obligatoria.")]
         [MinLength(6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.")]
         public string Contrasena { get; set; } = string.Empty;
+
+        
+        
+    }
+        public class LoginRespuestaDto
+    {
+        public string Token { get; set; } = string.Empty;
+
+        public int IdUsuario { get; set; }
+
+        public string Nombre { get; set; } = string.Empty;
+
+        public string Email { get; set; } = string.Empty;
+
+        public List<string> Roles { get; set; } = new();
+    }
+     public class LoginDto
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string Contrasena { get; set; } = string.Empty;
     }
 
     public class ActualizarUsuarioDto
