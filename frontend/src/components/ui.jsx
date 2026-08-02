@@ -23,12 +23,18 @@ export function BottomNav({ active = 'home' }) {
 
 export function FormFields({ fields }) { return <div className="fields">{fields.map((field) => <label key={field}>{field}<input type={field === 'Contraseña' ? 'password' : 'text'} placeholder={field === 'Correo electrónico' ? 'correo@ejemplo.com' : `Ingresa tu ${field.toLowerCase()}`} /></label>)}</div>; }
 
-export function ProductRow({ name, price, image }) { 
+const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=85';
+
+export function ProductRow({ id, name, price, image, fallbackImage = DEFAULT_IMAGE }) {
     const navigate = useNavigate();
-    return <article className="product-row" onClick={() => navigate('/producto')}><div><h3>{name}</h3><p className="muted">Carne a la parrilla, queso, tocino y vegetales frescos.</p><b>{price}</b></div><img src={image} alt={name}/></article>; 
+    const handleImageError = (e) => {
+        e.currentTarget.onerror = null;
+        e.currentTarget.src = fallbackImage;
+    };
+    return <article className="product-row" onClick={() => navigate(`/producto/${id || 1}`)}><div><h3>{name}</h3><p className="muted">Delicioso platillo preparado al momento.</p><b>{price}</b></div><img src={image || DEFAULT_IMAGE} alt={name} onError={handleImageError}/></article>; 
 }
 
 export function RestaurantCard({ item }) { 
     const navigate = useNavigate();
-    return <article className="restaurant-card" onClick={() => navigate('/restaurante')}><div className="restaurant-image" style={{ backgroundImage:`url(${item.image})` }}><span className="rating"><Icon filled>star</Icon>{item.rating}</span></div><div className="card-body"><h3>{item.name}</h3><p><Icon>schedule</Icon> {item.eta} <b>·</b> Envío $25</p><span className="chip">{item.tag}</span></div></article>; 
+    return <article className="restaurant-card" onClick={() => navigate(`/restaurante/${item.idRestaurante || 1}`)}><div className="restaurant-image" style={{ backgroundImage:`url(${item.image || item.imagen || DEFAULT_IMAGE})` }}><span className="rating"><Icon filled>star</Icon>{item.rating || '4.5'}</span></div><div className="card-body"><h3>{item.nombre || item.name}</h3><p><Icon>schedule</Icon> {item.eta || '30 min'} <b>·</b> Envío $25</p><span className="chip">{item.tag || 'Restaurante'}</span></div></article>; 
 }
