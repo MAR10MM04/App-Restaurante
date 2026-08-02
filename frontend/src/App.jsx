@@ -4,7 +4,8 @@ import { Splash, Welcome, Login, Register, Permissions } from './pages/Auth';
 import { Home, Search, Categories } from './pages/Main';
 import { Restaurant, Product, Cart, Confirm } from './pages/Restaurant';
 import { OrderPlaced, Tracking, Delivered, Rating, History } from './pages/Orders';
-import { Profile } from './pages/Profile';
+import { Profile, PartnerRegistration, DriverRegistration } from './pages/Profile';
+import { OwnerDashboard, DriverDashboard } from './pages/Dashboards';
 
 export default function App() {
   return (
@@ -21,8 +22,8 @@ export default function App() {
         <Route path="/buscar" element={<Search />} />
         <Route path="/categorias" element={<Categories />} />
         
-        <Route path="/restaurante" element={<Restaurant />} />
-        <Route path="/producto" element={<Product />} />
+        <Route path="/restaurante/:id" element={<Restaurant />} />
+        <Route path="/producto/:id" element={<Product />} />
         <Route path="/carrito" element={<Cart />} />
         <Route path="/confirmar-pedido" element={<Confirm />} />
         
@@ -33,6 +34,10 @@ export default function App() {
         <Route path="/historial" element={<History />} />
         
         <Route path="/perfil" element={<Profile />} />
+        <Route path="/registro-restaurante" element={<PartnerRegistration />} />
+        <Route path="/registro-repartidor" element={<DriverRegistration />} />
+        <Route path="/panel-restaurante" element={<OwnerDashboard />} />
+        <Route path="/panel-repartidor" element={<DriverDashboard />} />
         
         {/* Fallback route */}
         <Route path="*" element={<Navigate to="/splash" replace />} />
