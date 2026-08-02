@@ -91,6 +91,18 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddControllers();
 
+// Configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 
 // Swagger sin botón Authorize
@@ -119,9 +131,27 @@ app.UseHttpsRedirection();
 // Permite acceder a imágenes guardadas en wwwroot
 app.UseStaticFiles();
 
+app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Seed de base de datos
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<MyMDbContext>();
+        var passwordHasher = services.GetRequiredService<IPasswordHasher<Usuarios>>();
+        await MiApi.Data.DataSeeder.SeedAsync(context, passwordHasher);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Ocurrió un error al poblar la base de datos.");
+    }
+}
 
 app.Run();

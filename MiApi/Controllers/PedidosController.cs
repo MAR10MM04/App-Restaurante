@@ -151,12 +151,15 @@ namespace MiApi.Controllers
                         pedido.Restaurante.IdRestaurante,
                         pedido.Restaurante.Nombre,
                         pedido.Restaurante.Direccion,
-                        pedido.Restaurante.Telefono
+                        pedido.Restaurante.Telefono,
+                        pedido.Restaurante.Latitud,
+                        pedido.Restaurante.Longitud
                     },
 
                     DireccionEntrega = new
                     {
                         pedido.DireccionEntrega.IdDireccion,
+                        pedido.DireccionEntrega.Colonia,
                         pedido.DireccionEntrega.Latitud,
                         pedido.DireccionEntrega.Longitud
                     },
@@ -425,6 +428,28 @@ namespace MiApi.Controllers
 
             pedido.Estado = nuevoEstado;
 
+            if (nuevoEstado == "Entregado" &&
+                pedido.IdRepartidor.HasValue)
+            {
+                var tieneOtraEntregaActiva =
+                    await _context.Pedidos.AnyAsync(otroPedido =>
+                        otroPedido.IdPedido != pedido.IdPedido &&
+                        otroPedido.IdRepartidor == pedido.IdRepartidor &&
+                        otroPedido.Estado != "Entregado" &&
+                        otroPedido.Estado != "Cancelado");
+
+                var repartidor = await _context.Repartidores
+                    .FirstOrDefaultAsync(item =>
+                        item.IdRepartidor == pedido.IdRepartidor.Value);
+
+                if (repartidor is not null)
+                {
+                    repartidor.Estado = tieneOtraEntregaActiva
+                        ? "Ocupado"
+                        : "Disponible";
+                }
+            }
+
             await _context.SaveChangesAsync();
 
             return Ok(new
@@ -473,6 +498,9 @@ namespace MiApi.Controllers
 
             if (!repartidor.Estado.Equals(
                     "Activo",
+                    StringComparison.OrdinalIgnoreCase) &&
+                !repartidor.Estado.Equals(
+                    "Disponible",
                     StringComparison.OrdinalIgnoreCase))
             {
                 return BadRequest(new
